@@ -1,4 +1,4 @@
-# DatasetCondensation
+# Dataset Condensation
 - Dataset Condensation with Gradient Matching
 - Dataset Condensation with Distribution Matching
 - Linear Discriminant Analysis
