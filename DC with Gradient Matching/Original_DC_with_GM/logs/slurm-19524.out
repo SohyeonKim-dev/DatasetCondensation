@@ -1,0 +1,7 @@
+/data/happythgus/DatasetCondensation
+/data/opt/anaconda3/bin/python
+moana-r1
+Traceback (most recent call last):
+  File "/data/happythgus/DatasetCondensation/main.py", line 8, in <module>
+    from torchvision.utils import save_image
+ModuleNotFoundError: No module named 'torchvision'
