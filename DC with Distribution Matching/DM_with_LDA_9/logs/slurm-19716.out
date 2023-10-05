@@ -1,0 +1,30 @@
+/data/happythgus/repos/lda/DatasetCondensation
+/data/opt/anaconda3/bin/python
+moana-r1
+eval_it_pool:  [0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000]
+Files already downloaded and verified
+Files already downloaded and verified
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'dataset': 'CIFAR10', 'model': 'ConvNet', 'ipc': 50, 'eval_mode': 'SS', 'num_exp': 5, 'num_eval': 20, 'epoch_eval_train': 1000, 'Iteration': 20000, 'lr_img': 1.0, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'real', 'dsa_strategy': 'color_crop_cutout_flip_scale_rotate', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'method': 'DM', 'outer_loop': 50, 'inner_loop': 10, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7f562d9a7a30>, 'dsa': True}
+Evaluation model pool:  ['ConvNet']
+torch.Size([50000, 3, 32, 32])
+torch.Size([50000])
+Traceback (most recent call last):
+  File "/data/happythgus/repos/lda/DatasetCondensation/main_DM.py", line 260, in <module>
+    main()
+  File "/data/happythgus/repos/lda/DatasetCondensation/main_DM.py", line 117, in main
+    lda.fit(images_all, labels_all)
+  File "/data/opt/anaconda3/lib/python3.9/site-packages/sklearn/discriminant_analysis.py", line 544, in fit
+    X, y = self._validate_data(
+  File "/data/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py", line 581, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File "/data/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/validation.py", line 964, in check_X_y
+    X = check_array(
+  File "/data/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/validation.py", line 746, in check_array
+    array = np.asarray(array, order=order, dtype=dtype)
+  File "/home/happythgus/.local/lib/python3.9/site-packages/torch/_tensor.py", line 972, in __array__
+    return self.numpy().astype(dtype, copy=False)
+TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
