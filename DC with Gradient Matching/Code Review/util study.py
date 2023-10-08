@@ -332,11 +332,20 @@ def epoch(mode, dataloader, net, optimizer, criterion, args, aug):
                 img = DiffAugment(img, args.dsa_strategy, param=args.dsa_param)
             else:
                 img = augment(img, args.dc_aug_param, device=args.device)
+        
+        # lab -> label, y값을 의미함 
         lab = datum[1].long().to(args.device)
         n_b = lab.shape[0]
 
         # convNet에 image를 통과시킨 output
         output = net(img) 
+
+        # print(output)
+        # print(lab)
+        # print(output.shape) # [10, 10]
+        # print(lab.shape) # [10]
+
+
         loss = criterion(output, lab)
         # 여기가 cross entropy loss!
         acc = np.sum(np.equal(np.argmax(output.cpu().data.numpy(), axis=-1), lab.cpu().data.numpy()))
