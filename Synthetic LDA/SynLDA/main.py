@@ -8,7 +8,7 @@ import torch.nn as nn
 from torchvision.utils import save_image
 from utils import get_loops, get_dataset, get_network, get_eval_pool, evaluate_synset, get_daparam, match_loss, get_time, TensorDataset, epoch, DiffAugment, augment, ParamDiffAug, LDALoss
 
-# torch tensor np.cpu()
+# copy.deepcopy 제거 
 
 def main():
 
@@ -204,64 +204,35 @@ def main():
 
                 # new LDA Loss 계산
 
-                # print(len(image_syn)) # 10
-                # print(len(label_syn)) # 10
-
-                # print(image_syn.shape) # torch.Size([10, 1, 28, 28])
-                # print(label_syn.shape) # torch.Size([10])
-
-                # print(image_syn[0])
-                # print(label_syn[0]) # 0                 
-
-                '''
-                10
-                10
-                torch.Size([10, 1, 28, 28]) # ipc가 1이라서 10장 밖에 없나? # Gray image -> Channel이 1 
-                torch.Size([10])
-                [2023-10-14 04:19:07] iter = 1000, loss = 70.2167 # 최종
-                Run 5 experiments, train on ConvNet, evaluate 100 random ConvNet, mean  = 92.04%  std = 0.39%
-                
-                '''
-
                 lda_X = []
                 lda_Y = []
 
-                # detach를 써도 괜찮을 지 모르겠네 (이후 제거해보자)
-                image_syn = copy.deepcopy(image_syn).to('cuda')
-                label_syn = copy.deepcopy(label_syn).to('cuda')
+                # 이 부분 주석처리 -> 제대로 syn 된다! :) 
+                # image_syn = copy.deepcopy(image_syn).to('cuda')
+                # label_syn = copy.deepcopy(label_syn).to('cuda')
 
                 for i in range(len(label_syn)):  
                     img = image_syn[i].float().to(args.device)
-
-                    # 필요 없으면 aug 제거하자 
-                    # aug = True # False # 다 same
-                    
-                    # if aug:
-                    #     if args.dsa:
-                    #         img = DiffAugment(img, args.dsa_strategy, param=args.dsa_param)
-                    #     else:
-                    #         img = augment(img, args.dc_aug_param, device=args.device)
-                    
                     output = net(img.unsqueeze(0)).to('cuda') 
 
                     lda_X.append(output.to(args.device))
                     lda_Y.append(label_syn[i].long().to(args.device))
 
                 lda_loss = LDALoss(lda_X, lda_Y).cuda()
-                print(len(lda_loss)) # 1
-                print(lda_loss) # tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], device='cuda:0', grad_fn=<DivBackward0>)
-                loss = (loss + (0.8 * lda_loss.mean())).to('cuda')
+                # print(len(lda_loss)) # 1
+                # print(lda_loss) # tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], device='cuda:0', grad_fn=<DivBackward0>)
+                
+                loss = (loss + (0.5 * lda_loss.mean())).to('cuda')
 
                 optimizer_img.zero_grad()
                 # grad can be implicitly created only for scalar outputs error 
                 loss.backward()
-                print(loss)
+                # print(loss)
                 optimizer_img.step()
                 loss_avg += loss.item()
 
                 if ol == args.outer_loop - 1:
                     break
-
 
                 # optimizer_net -> network update 
                 # optimizer_img -> synthetic image update 
@@ -273,7 +244,6 @@ def main():
                 for il in range(args.inner_loop):
                     epoch('train', trainloader, net, optimizer_net, criterion, args, aug = True if args.dsa else False)
 
-
             loss_avg /= (num_classes * args.outer_loop)
 
             if it%10 == 0:
@@ -283,15 +253,10 @@ def main():
                 data_save.append([copy.deepcopy(image_syn.detach().cpu()), copy.deepcopy(label_syn.detach().cpu())])
                 torch.save({'data': data_save, 'accs_all_exps': accs_all_exps, }, os.path.join(args.save_path, 'res_%s_%s_%s_%dipc.pt'%(args.method, args.dataset, args.model, args.ipc)))
 
-
     print('\n==================== Final Results ====================\n')
     for key in model_eval_pool:
         accs = accs_all_exps[key]
         print('Run %d experiments, train on %s, evaluate %d random %s, mean  = %.2f%%  std = %.2f%%'%(args.num_exp, args.model, len(accs), key, np.mean(accs)*100, np.std(accs)*100))
 
-
-
 if __name__ == '__main__':
     main()
-
-
