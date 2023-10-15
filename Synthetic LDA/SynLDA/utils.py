@@ -17,24 +17,32 @@ def LDALoss(X, Y):
     # X = torch.Tensor(X)  # X를 PyTorch Tensor로 변환
     # Y = torch.LongTensor(Y)  # Y를 PyTorch LongTensor로 변환
 
-    num_features = len(X) 
-    print(num_features)
-    num_classes = len(torch.unique(Y))
+    # X = np.array(X)
+    # X = torch.Tensor(X.cpu())
 
-    overall_mean = torch.mean(X, dim=0)
-    allClassVar = torch.sum((X - overall_mean) ** 2, dim=0)
+    # Y = np.array(Y)
+    # Y = torch.Tensor(Y.cpu())
+
+    # print(X[0].shape) # torch.Size([1, 10])
+
+    num_features = 10 # X[0].shape
+    num_classes = 10
+
+    overall_mean = torch.mean(torch.stack(X).to('cuda'), dim=0).cuda()
+    allClassVar = torch.sum((torch.stack(X).to('cuda') - overall_mean) ** 2, dim=0).cuda()
 
     # Compute class per variance (withinClassVar)
 
-    withinClassVar = torch.zeros(num_features, device=X.device)
+    withinClassVar = torch.zeros(num_features).cuda()
     for c in range(num_classes):
-        class_samples = X[Y == c]
-        class_mean = torch.mean(class_samples, dim=0)
-        diff = class_samples - class_mean
-        withinClassVar += torch.sum(diff * diff, dim=0)
+        class_samples = X[Y == c].to('cuda')
+        class_mean = torch.mean(class_samples.to('cuda'), dim=0).cuda()
+        diff = class_samples.to('cuda') - class_mean.to('cuda')
+        withinClassVar = (withinClassVar + torch.sum(diff * diff, dim=0)).cuda()
 
     # LDALoss 수식 변경
-    LDALoss = withinClassVar / allClassVar
+    LDALoss = (withinClassVar / allClassVar).to('cuda')
+    print(LDALoss)
 
     return LDALoss
 

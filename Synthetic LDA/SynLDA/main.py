@@ -8,7 +8,7 @@ import torch.nn as nn
 from torchvision.utils import save_image
 from utils import get_loops, get_dataset, get_network, get_eval_pool, evaluate_synset, get_daparam, match_loss, get_time, TensorDataset, epoch, DiffAugment, augment, ParamDiffAug, LDALoss
 
-# torch num_features
+# torch tensor np.cpu()
 
 def main():
 
@@ -227,31 +227,35 @@ def main():
                 lda_Y = []
 
                 # detach를 써도 괜찮을 지 모르겠네 (이후 제거해보자)
-                image_syn = copy.deepcopy(image_syn.detach())
-                label_syn = copy.deepcopy(label_syn.detach())
+                image_syn = copy.deepcopy(image_syn).to('cuda')
+                label_syn = copy.deepcopy(label_syn).to('cuda')
 
                 for i in range(len(label_syn)):  
                     img = image_syn[i].float().to(args.device)
 
                     # 필요 없으면 aug 제거하자 
-                    aug = True # False # 다 same
+                    # aug = True # False # 다 same
                     
-                    if aug:
-                        if args.dsa:
-                            img = DiffAugment(img, args.dsa_strategy, param=args.dsa_param)
-                        else:
-                            img = augment(img, args.dc_aug_param, device=args.device)
+                    # if aug:
+                    #     if args.dsa:
+                    #         img = DiffAugment(img, args.dsa_strategy, param=args.dsa_param)
+                    #     else:
+                    #         img = augment(img, args.dc_aug_param, device=args.device)
                     
-                    output = net(img.unsqueeze(0)) 
+                    output = net(img.unsqueeze(0)).to('cuda') 
 
-                    lda_X.append(output)
+                    lda_X.append(output.to(args.device))
                     lda_Y.append(label_syn[i].long().to(args.device))
 
-                lda_loss = LDALoss(lda_X, lda_Y)
-                loss = loss + (0.8 * lda_loss)
+                lda_loss = LDALoss(lda_X, lda_Y).cuda()
+                print(len(lda_loss)) # 1
+                print(lda_loss) # tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], device='cuda:0', grad_fn=<DivBackward0>)
+                loss = (loss + (0.8 * lda_loss.mean())).to('cuda')
 
                 optimizer_img.zero_grad()
+                # grad can be implicitly created only for scalar outputs error 
                 loss.backward()
+                print(loss)
                 optimizer_img.step()
                 loss_avg += loss.item()
 
