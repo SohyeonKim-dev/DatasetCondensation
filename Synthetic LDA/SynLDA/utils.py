@@ -10,39 +10,38 @@ from scipy.ndimage.interpolation import rotate as scipyrotate
 from networks import MLP, ConvNet, LeNet, AlexNet, AlexNetBN, VGG11, VGG11BN, ResNet18, ResNet18BN_AP, ResNet18BN
 
 def LDALoss(X, Y):
-    # 네트워크 후반부에 배치되었다고 가정
-    # X = last feature map / Y = label 
-    # var = (X - m)^2 / n
+    # print(len(X)) # 10
+    # print(len(X[0])) # 10
+    # print(len(Y)) # 10
 
-    # X = torch.Tensor(X)  # X를 PyTorch Tensor로 변환
-    # Y = torch.LongTensor(Y)  # Y를 PyTorch LongTensor로 변환
+    # X sample 10개 , feature 10개 , class 10개 # 왜냐하면 ipc = 1 , 합성 데이터가 10장이 끝 
 
-    # X = np.array(X)
-    # X = torch.Tensor(X.cpu())
-
-    # Y = np.array(Y)
-    # Y = torch.Tensor(Y.cpu())
-
-    # print(X[0].shape) # torch.Size([1, 10])
-
-    num_features = 10 # X[0].shape
+    num_features = len(X[0]) 
     num_classes = 10
 
-    overall_mean = torch.mean(torch.stack(X).to('cuda'), dim=0).cuda()
-    allClassVar = torch.sum((torch.stack(X).to('cuda') - overall_mean) ** 2, dim=0).cuda()
+    overall_mean = torch.stack(X).mean().to('cuda').item()
+    # overall_mean = torch.mean(torch.stack(X), dim=0).to('cuda').squeeze()
+    print(overall_mean)
+
+    allClassVar = torch.sum((torch.stack(X).to('cuda') - overall_mean) ** 2).to('cuda').item()
+    print(allClassVar)
 
     # Compute class per variance (withinClassVar)
+    withinClassVar = torch.zeros(num_features).to('cuda')
 
-    withinClassVar = torch.zeros(num_features).cuda()
     for c in range(num_classes):
         class_samples = X[Y == c].to('cuda')
-        class_mean = torch.mean(class_samples.to('cuda'), dim=0).cuda()
-        diff = class_samples.to('cuda') - class_mean.to('cuda')
-        withinClassVar = (withinClassVar + torch.sum(diff * diff, dim=0)).cuda()
+        class_mean = torch.mean(class_samples.to('cuda')).to('cuda').item()
+        print(class_mean)
+        
+        diff = (class_samples - class_mean)
+        withinClassVar = (withinClassVar + torch.sum(diff * diff).to('cuda').item())
+        print(withinClassVar)
 
     # LDALoss 수식 변경
-    LDALoss = (withinClassVar / allClassVar).to('cuda')
+    LDALoss = (withinClassVar / allClassVar).to('cuda') # 상수 값이 안나오고 있는 것 . 수식 변경 필요
     print(LDALoss)
+    print(LDALoss.shape)
 
     return LDALoss
 
@@ -154,7 +153,7 @@ class TensorDataset(Dataset):
 # NNPACK SpatialConvolution_updateOutput failed 오류 by 'instancenorm' -> 'batchnorm'
 def get_default_convnet_setting():
     net_width, net_depth, net_act, net_norm, net_pooling = 128, 3, 'relu', 'batchnorm', 'avgpooling'
-    print("batchnorm")
+    # print("batchnorm")
     return net_width, net_depth, net_act, net_norm, net_pooling
 
 
