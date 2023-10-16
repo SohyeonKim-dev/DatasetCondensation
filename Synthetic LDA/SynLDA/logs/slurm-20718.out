@@ -1,0 +1,90 @@
+/data/happythgus/LDA/DC
+/data/opt/anaconda3/bin/python
+moana-r3
+/data/happythgus/LDA/DC/main.py:90: DeprecationWarning: an integer is required (got type numpy.float64).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+/data/happythgus/LDA/DC/main.py:90: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:245.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+eval_it_pool:  [0, 500, 1000]
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'method': 'DC', 'dataset': 'MNIST', 'model': 'ConvNet', 'ipc': 1, 'eval_mode': 'S', 'num_exp': 5, 'num_eval': 20, 'epoch_eval_train': 300, 'Iteration': 1000, 'lr_img': 0.1, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'noise', 'dsa_strategy': 'None', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'outer_loop': 1, 'inner_loop': 1, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7f72140c5fa0>, 'dsa': False}
+Evaluation model pool:  ['ConvNet']
+class c = 0: 5923 real images
+class c = 1: 6742 real images
+class c = 2: 5958 real images
+class c = 3: 6131 real images
+class c = 4: 5842 real images
+class c = 5: 5421 real images
+class c = 6: 5918 real images
+class c = 7: 6265 real images
+class c = 8: 5851 real images
+class c = 9: 5949 real images
+real images channel 0, mean = -0.0001, std = 1.0000
+initialize synthetic data from random noise
+[2023-10-16 00:53:06] training begins
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 0
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'crop_scale_rotate'}
+batchnorm
+[2023-10-16 00:53:13] Evaluate_00: epoch = 1000 train time = 5 s train loss = 0.004935 train acc = 1.0000, test acc = 0.0331
+batchnorm
+[2023-10-16 00:53:19] Evaluate_01: epoch = 1000 train time = 4 s train loss = 0.001086 train acc = 1.0000, test acc = 0.0385
+batchnorm
+[2023-10-16 00:53:25] Evaluate_02: epoch = 1000 train time = 4 s train loss = 0.002458 train acc = 1.0000, test acc = 0.0410
+batchnorm
+[2023-10-16 00:53:30] Evaluate_03: epoch = 1000 train time = 4 s train loss = 0.000861 train acc = 1.0000, test acc = 0.0470
+batchnorm
+[2023-10-16 00:53:36] Evaluate_04: epoch = 1000 train time = 4 s train loss = 0.001423 train acc = 1.0000, test acc = 0.0395
+batchnorm
+[2023-10-16 00:53:42] Evaluate_05: epoch = 1000 train time = 4 s train loss = 0.000895 train acc = 1.0000, test acc = 0.0340
+batchnorm
+[2023-10-16 00:53:48] Evaluate_06: epoch = 1000 train time = 4 s train loss = 0.000326 train acc = 1.0000, test acc = 0.0498
+batchnorm
+[2023-10-16 00:53:54] Evaluate_07: epoch = 1000 train time = 4 s train loss = 0.000436 train acc = 1.0000, test acc = 0.0281
+batchnorm
+[2023-10-16 00:54:00] Evaluate_08: epoch = 1000 train time = 4 s train loss = 0.000968 train acc = 1.0000, test acc = 0.0230
+batchnorm
+[2023-10-16 00:54:06] Evaluate_09: epoch = 1000 train time = 4 s train loss = 0.000700 train acc = 1.0000, test acc = 0.0369
+batchnorm
+[2023-10-16 00:54:11] Evaluate_10: epoch = 1000 train time = 4 s train loss = 0.000516 train acc = 1.0000, test acc = 0.0463
+batchnorm
+[2023-10-16 00:54:17] Evaluate_11: epoch = 1000 train time = 4 s train loss = 0.000479 train acc = 1.0000, test acc = 0.0393
+batchnorm
+[2023-10-16 00:54:23] Evaluate_12: epoch = 1000 train time = 4 s train loss = 0.000517 train acc = 1.0000, test acc = 0.0353
+batchnorm
+[2023-10-16 00:54:29] Evaluate_13: epoch = 1000 train time = 4 s train loss = 0.001346 train acc = 1.0000, test acc = 0.0273
+batchnorm
+[2023-10-16 00:54:35] Evaluate_14: epoch = 1000 train time = 4 s train loss = 0.001994 train acc = 1.0000, test acc = 0.0275
+batchnorm
+[2023-10-16 00:54:41] Evaluate_15: epoch = 1000 train time = 4 s train loss = 0.000340 train acc = 1.0000, test acc = 0.0415
+batchnorm
+[2023-10-16 00:54:47] Evaluate_16: epoch = 1000 train time = 4 s train loss = 0.005695 train acc = 1.0000, test acc = 0.0290
+batchnorm
+[2023-10-16 00:54:52] Evaluate_17: epoch = 1000 train time = 4 s train loss = 0.002255 train acc = 1.0000, test acc = 0.0386
+batchnorm
+[2023-10-16 00:54:58] Evaluate_18: epoch = 1000 train time = 4 s train loss = 0.000416 train acc = 1.0000, test acc = 0.0241
+batchnorm
+[2023-10-16 00:55:04] Evaluate_19: epoch = 1000 train time = 4 s train loss = 0.002486 train acc = 1.0000, test acc = 0.0368
+Evaluate 20 random ConvNet, mean = 0.0358 std = 0.0074
+-------------------------
+batchnorm
+1
+tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], device='cuda:0',
+       grad_fn=<DivBackward0>)
+Traceback (most recent call last):
+  File "/data/happythgus/LDA/DC/main.py", line 296, in <module>
+    main()
+  File "/data/happythgus/LDA/DC/main.py", line 257, in main
+    loss.backward()
+  File "/home/happythgus/.local/lib/python3.9/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/home/happythgus/.local/lib/python3.9/site-packages/torch/autograd/__init__.py", line 193, in backward
+    grad_tensors_ = _make_grads(tensors, grad_tensors_, is_grads_batched=False)
+  File "/home/happythgus/.local/lib/python3.9/site-packages/torch/autograd/__init__.py", line 88, in _make_grads
+    raise RuntimeError("grad can be implicitly created only for scalar outputs")
+RuntimeError: grad can be implicitly created only for scalar outputs

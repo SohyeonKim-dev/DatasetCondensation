@@ -1,0 +1,81 @@
+/data/happythgus/LDA/DC
+/data/opt/anaconda3/bin/python
+moana-r3
+/data/happythgus/LDA/DC/main.py:90: DeprecationWarning: an integer is required (got type numpy.float64).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+/data/happythgus/LDA/DC/main.py:90: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:245.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+eval_it_pool:  [0, 500, 1000]
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'method': 'DC', 'dataset': 'MNIST', 'model': 'ConvNet', 'ipc': 1, 'eval_mode': 'S', 'num_exp': 5, 'num_eval': 20, 'epoch_eval_train': 300, 'Iteration': 1000, 'lr_img': 0.1, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'noise', 'dsa_strategy': 'None', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'outer_loop': 1, 'inner_loop': 1, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7ffb2c0aceb0>, 'dsa': False}
+Evaluation model pool:  ['ConvNet']
+class c = 0: 5923 real images
+class c = 1: 6742 real images
+class c = 2: 5958 real images
+class c = 3: 6131 real images
+class c = 4: 5842 real images
+class c = 5: 5421 real images
+class c = 6: 5918 real images
+class c = 7: 6265 real images
+class c = 8: 5851 real images
+class c = 9: 5949 real images
+real images channel 0, mean = -0.0001, std = 1.0000
+initialize synthetic data from random noise
+[2023-10-16 00:26:17] training begins
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 0
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'crop_scale_rotate'}
+batchnorm
+[2023-10-16 00:26:24] Evaluate_00: epoch = 1000 train time = 5 s train loss = 0.001546 train acc = 1.0000, test acc = 0.1643
+batchnorm
+[2023-10-16 00:26:30] Evaluate_01: epoch = 1000 train time = 4 s train loss = 0.000361 train acc = 1.0000, test acc = 0.1651
+batchnorm
+[2023-10-16 00:26:36] Evaluate_02: epoch = 1000 train time = 4 s train loss = 0.000428 train acc = 1.0000, test acc = 0.1573
+batchnorm
+[2023-10-16 00:26:43] Evaluate_03: epoch = 1000 train time = 4 s train loss = 0.000832 train acc = 1.0000, test acc = 0.1417
+batchnorm
+[2023-10-16 00:26:49] Evaluate_04: epoch = 1000 train time = 4 s train loss = 0.000285 train acc = 1.0000, test acc = 0.1456
+batchnorm
+[2023-10-16 00:26:55] Evaluate_05: epoch = 1000 train time = 4 s train loss = 0.001498 train acc = 1.0000, test acc = 0.1524
+batchnorm
+[2023-10-16 00:27:01] Evaluate_06: epoch = 1000 train time = 4 s train loss = 0.000265 train acc = 1.0000, test acc = 0.1719
+batchnorm
+[2023-10-16 00:27:07] Evaluate_07: epoch = 1000 train time = 4 s train loss = 0.000188 train acc = 1.0000, test acc = 0.1383
+batchnorm
+[2023-10-16 00:27:13] Evaluate_08: epoch = 1000 train time = 4 s train loss = 0.000843 train acc = 1.0000, test acc = 0.1684
+batchnorm
+[2023-10-16 00:27:19] Evaluate_09: epoch = 1000 train time = 4 s train loss = 0.001170 train acc = 1.0000, test acc = 0.1471
+batchnorm
+[2023-10-16 00:27:25] Evaluate_10: epoch = 1000 train time = 4 s train loss = 0.000747 train acc = 1.0000, test acc = 0.1263
+batchnorm
+[2023-10-16 00:27:31] Evaluate_11: epoch = 1000 train time = 4 s train loss = 0.002672 train acc = 1.0000, test acc = 0.1671
+batchnorm
+[2023-10-16 00:27:37] Evaluate_12: epoch = 1000 train time = 4 s train loss = 0.000735 train acc = 1.0000, test acc = 0.1630
+batchnorm
+[2023-10-16 00:27:43] Evaluate_13: epoch = 1000 train time = 4 s train loss = 0.013166 train acc = 1.0000, test acc = 0.1617
+batchnorm
+[2023-10-16 00:27:49] Evaluate_14: epoch = 1000 train time = 4 s train loss = 0.000771 train acc = 1.0000, test acc = 0.1614
+batchnorm
+[2023-10-16 00:27:55] Evaluate_15: epoch = 1000 train time = 4 s train loss = 0.003739 train acc = 1.0000, test acc = 0.1259
+batchnorm
+[2023-10-16 00:28:01] Evaluate_16: epoch = 1000 train time = 4 s train loss = 0.000320 train acc = 1.0000, test acc = 0.1644
+batchnorm
+[2023-10-16 00:28:07] Evaluate_17: epoch = 1000 train time = 4 s train loss = 0.001128 train acc = 1.0000, test acc = 0.1576
+batchnorm
+[2023-10-16 00:28:13] Evaluate_18: epoch = 1000 train time = 4 s train loss = 0.001072 train acc = 1.0000, test acc = 0.1380
+batchnorm
+[2023-10-16 00:28:19] Evaluate_19: epoch = 1000 train time = 4 s train loss = 0.000536 train acc = 1.0000, test acc = 0.1397
+Evaluate 20 random ConvNet, mean = 0.1529 std = 0.0137
+-------------------------
+batchnorm
+Traceback (most recent call last):
+  File "/data/happythgus/LDA/DC/main.py", line 291, in <module>
+    main()
+  File "/data/happythgus/LDA/DC/main.py", line 226, in main
+    lda_X = [].to('cuda')
+AttributeError: 'list' object has no attribute 'to'

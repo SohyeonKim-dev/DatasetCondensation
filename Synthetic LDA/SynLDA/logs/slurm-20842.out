@@ -1,0 +1,70 @@
+/data/happythgus/LDA/DC
+/data/opt/anaconda3/bin/python
+moana-r3
+/data/happythgus/LDA/DC/main.py:90: DeprecationWarning: an integer is required (got type numpy.float64).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+/data/happythgus/LDA/DC/main.py:90: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:245.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+eval_it_pool:  [0, 500, 1000]
+Files already downloaded and verified
+Files already downloaded and verified
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'method': 'DC', 'dataset': 'CIFAR10', 'model': 'ConvNet', 'ipc': 1, 'eval_mode': 'S', 'num_exp': 5, 'num_eval': 20, 'epoch_eval_train': 300, 'Iteration': 1000, 'lr_img': 0.1, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'noise', 'dsa_strategy': 'None', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'outer_loop': 1, 'inner_loop': 1, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7f4a3e911c70>, 'dsa': False}
+Evaluation model pool:  ['ConvNet']
+class c = 0: 5000 real images
+class c = 1: 5000 real images
+class c = 2: 5000 real images
+class c = 3: 5000 real images
+class c = 4: 5000 real images
+class c = 5: 5000 real images
+class c = 6: 5000 real images
+class c = 7: 5000 real images
+class c = 8: 5000 real images
+class c = 9: 5000 real images
+real images channel 0, mean = -0.0000, std = 1.2211
+real images channel 1, mean = -0.0002, std = 1.2211
+real images channel 2, mean = 0.0002, std = 1.3014
+initialize synthetic data from random noise
+[2023-10-16 14:43:18] training begins
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 0
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'none'}
+[2023-10-16 14:43:22] Evaluate_00: epoch = 0300 train time = 2 s train loss = 0.000399 train acc = 1.0000, test acc = 0.1470
+[2023-10-16 14:43:25] Evaluate_01: epoch = 0300 train time = 0 s train loss = 0.000409 train acc = 1.0000, test acc = 0.1422
+[2023-10-16 14:43:28] Evaluate_02: epoch = 0300 train time = 0 s train loss = 0.000406 train acc = 1.0000, test acc = 0.1172
+[2023-10-16 14:43:30] Evaluate_03: epoch = 0300 train time = 0 s train loss = 0.000395 train acc = 1.0000, test acc = 0.1337
+[2023-10-16 14:43:33] Evaluate_04: epoch = 0300 train time = 0 s train loss = 0.000415 train acc = 1.0000, test acc = 0.1311
+[2023-10-16 14:43:36] Evaluate_05: epoch = 0300 train time = 0 s train loss = 0.000375 train acc = 1.0000, test acc = 0.1207
+[2023-10-16 14:43:38] Evaluate_06: epoch = 0300 train time = 0 s train loss = 0.000391 train acc = 1.0000, test acc = 0.1278
+[2023-10-16 14:43:41] Evaluate_07: epoch = 0300 train time = 0 s train loss = 0.000393 train acc = 1.0000, test acc = 0.1391
+[2023-10-16 14:43:44] Evaluate_08: epoch = 0300 train time = 0 s train loss = 0.000415 train acc = 1.0000, test acc = 0.1247
+[2023-10-16 14:43:46] Evaluate_09: epoch = 0300 train time = 0 s train loss = 0.000398 train acc = 1.0000, test acc = 0.1132
+[2023-10-16 14:43:49] Evaluate_10: epoch = 0300 train time = 0 s train loss = 0.000404 train acc = 1.0000, test acc = 0.1407
+[2023-10-16 14:43:52] Evaluate_11: epoch = 0300 train time = 0 s train loss = 0.000414 train acc = 1.0000, test acc = 0.1417
+[2023-10-16 14:43:54] Evaluate_12: epoch = 0300 train time = 0 s train loss = 0.000386 train acc = 1.0000, test acc = 0.1310
+[2023-10-16 14:43:57] Evaluate_13: epoch = 0300 train time = 0 s train loss = 0.000408 train acc = 1.0000, test acc = 0.1289
+[2023-10-16 14:44:00] Evaluate_14: epoch = 0300 train time = 0 s train loss = 0.000396 train acc = 1.0000, test acc = 0.1485
+[2023-10-16 14:44:02] Evaluate_15: epoch = 0300 train time = 0 s train loss = 0.000420 train acc = 1.0000, test acc = 0.1439
+[2023-10-16 14:44:05] Evaluate_16: epoch = 0300 train time = 0 s train loss = 0.000397 train acc = 1.0000, test acc = 0.1485
+[2023-10-16 14:44:07] Evaluate_17: epoch = 0300 train time = 0 s train loss = 0.000402 train acc = 1.0000, test acc = 0.1501
+[2023-10-16 14:44:10] Evaluate_18: epoch = 0300 train time = 0 s train loss = 0.000416 train acc = 1.0000, test acc = 0.1284
+[2023-10-16 14:44:13] Evaluate_19: epoch = 0300 train time = 0 s train loss = 0.000405 train acc = 1.0000, test acc = 0.1523
+Evaluate 20 random ConvNet, mean = 0.1355 std = 0.0112
+-------------------------
+Traceback (most recent call last):
+  File "/data/happythgus/LDA/DC/main.py", line 263, in <module>
+    main()
+  File "/data/happythgus/LDA/DC/main.py", line 221, in main
+    lda_loss = LDALoss(lda_X, lda_Y).cuda()
+  File "/data/happythgus/LDA/DC/utils.py", line 24, in LDALoss
+    overall_mean = torch.mean(X, dim=0).to('cuda').squeeze()
+TypeError: mean() received an invalid combination of arguments - got (list, dim=int), but expected one of:
+ * (Tensor input, *, torch.dtype dtype)
+ * (Tensor input, tuple of ints dim, bool keepdim, *, torch.dtype dtype, Tensor out)
+ * (Tensor input, tuple of names dim, bool keepdim, *, torch.dtype dtype, Tensor out)
+

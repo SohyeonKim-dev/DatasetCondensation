@@ -21,10 +21,8 @@ def LDALoss(X, Y):
 
     overall_mean = torch.stack(X).mean().to('cuda').item()
     # overall_mean = torch.mean(torch.stack(X), dim=0).to('cuda').squeeze()
-    print(overall_mean)
 
     allClassVar = torch.sum((torch.stack(X).to('cuda') - overall_mean) ** 2).to('cuda').item()
-    print(allClassVar)
 
     # Compute class per variance (withinClassVar)
     withinClassVar = torch.zeros(num_features).to('cuda')
@@ -32,16 +30,14 @@ def LDALoss(X, Y):
     for c in range(num_classes):
         class_samples = X[Y == c].to('cuda')
         class_mean = torch.mean(class_samples.to('cuda')).to('cuda').item()
-        print(class_mean)
-        
-        diff = (class_samples - class_mean)
-        withinClassVar = (withinClassVar + torch.sum(diff * diff).to('cuda').item())
-        print(withinClassVar)
+
+        for i in range(class_samples.shape[0]): 
+            diff = (torch.sum(class_samples[i] - class_mean).to('cuda')).item() 
+            withinClassVar = (withinClassVar + diff * diff)
 
     # LDALoss 수식 변경
-    LDALoss = (withinClassVar / allClassVar).to('cuda') # 상수 값이 안나오고 있는 것 . 수식 변경 필요
-    print(LDALoss)
-    print(LDALoss.shape)
+    LDALoss = (withinClassVar / allClassVar).to('cuda')
+    print(LDALoss.shape) # 목표 - 여기서 죽기 
 
     return LDALoss
 

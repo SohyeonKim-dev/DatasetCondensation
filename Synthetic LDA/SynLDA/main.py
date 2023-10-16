@@ -14,9 +14,9 @@ def main():
 
     parser = argparse.ArgumentParser(description='Parameter Processing')
     parser.add_argument('--method', type=str, default='DC', help='DC/DSA')
-    parser.add_argument('--dataset', type=str, default='MNIST', help='dataset')
+    parser.add_argument('--dataset', type=str, default='CIFAR10', help='dataset')
     parser.add_argument('--model', type=str, default='ConvNet', help='model')
-    parser.add_argument('--ipc', type=int, default=1, help='image(s) per class')
+    parser.add_argument('--ipc', type=int, default=1, help='image(s) per class') # ipc를 증가..? 
     parser.add_argument('--eval_mode', type=str, default='S', help='eval_mode') # S: the same to training model, M: multi architectures,  W: net width, D: net depth, A: activation function, P: pooling layer, N: normalization layer,
     parser.add_argument('--num_exp', type=int, default=5, help='the number of experiments')
     parser.add_argument('--num_eval', type=int, default=20, help='the number of evaluating randomly initialized models')
@@ -219,15 +219,11 @@ def main():
                     lda_Y.append(label_syn[i].long().to(args.device))
 
                 lda_loss = LDALoss(lda_X, lda_Y).cuda()
-                # print(len(lda_loss)) # 1
-                # print(lda_loss) # tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], device='cuda:0', grad_fn=<DivBackward0>)
-                
-                loss = (loss + (0.5 * lda_loss.mean())).to('cuda')
+               
+                loss = (loss + (0.8 * lda_loss)).to('cuda')
 
                 optimizer_img.zero_grad()
-                # grad can be implicitly created only for scalar outputs error 
                 loss.backward()
-                # print(loss)
                 optimizer_img.step()
                 loss_avg += loss.item()
 
