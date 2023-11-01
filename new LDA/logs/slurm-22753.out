@@ -1,0 +1,66 @@
+/data/happythgus/newLDA/DC
+/data/opt/anaconda3/envs/pytorch1.12.1_p38/bin/python
+moana-r3
+main.py:95: DeprecationWarning: an integer is required (got type numpy.float64).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+main.py:95: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484810403/work/torch/csrc/utils/tensor_new.cpp:201.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+eval_it_pool:  [0, 500, 1000]
+Files already downloaded and verified
+Files already downloaded and verified
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'method': 'DC', 'dataset': 'CIFAR10', 'model': 'ConvNet', 'ipc': 10, 'eval_mode': 'S', 'num_exp': 1, 'num_eval': 20, 'epoch_eval_train': 300, 'Iteration': 1000, 'lr_img': 0.1, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'noise', 'dsa_strategy': 'None', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'outer_loop': 10, 'inner_loop': 50, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7f4d8c66ccd0>, 'dsa': False}
+Evaluation model pool:  ['ConvNet']
+class c = 0: 5000 real images
+class c = 1: 5000 real images
+class c = 2: 5000 real images
+class c = 3: 5000 real images
+class c = 4: 5000 real images
+class c = 5: 5000 real images
+class c = 6: 5000 real images
+class c = 7: 5000 real images
+class c = 8: 5000 real images
+class c = 9: 5000 real images
+real images channel 0, mean = -0.0000, std = 1.2211
+real images channel 1, mean = -0.0002, std = 1.2211
+real images channel 2, mean = 0.0002, std = 1.3014
+initialize synthetic data from random noise
+[2023-10-27 23:48:04] training begins
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 0
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'none'}
+[2023-10-27 23:48:11] Evaluate_00: epoch = 0300 train time = 5 s train loss = 0.003636 train acc = 1.0000, test acc = 0.0913
+[2023-10-27 23:48:16] Evaluate_01: epoch = 0300 train time = 2 s train loss = 0.003662 train acc = 1.0000, test acc = 0.1048
+[2023-10-27 23:48:20] Evaluate_02: epoch = 0300 train time = 2 s train loss = 0.003567 train acc = 1.0000, test acc = 0.1040
+[2023-10-27 23:48:25] Evaluate_03: epoch = 0300 train time = 2 s train loss = 0.003622 train acc = 1.0000, test acc = 0.1067
+[2023-10-27 23:48:29] Evaluate_04: epoch = 0300 train time = 2 s train loss = 0.003640 train acc = 1.0000, test acc = 0.0945
+[2023-10-27 23:48:34] Evaluate_05: epoch = 0300 train time = 2 s train loss = 0.003594 train acc = 1.0000, test acc = 0.0943
+[2023-10-27 23:48:38] Evaluate_06: epoch = 0300 train time = 2 s train loss = 0.003674 train acc = 1.0000, test acc = 0.1129
+[2023-10-27 23:48:43] Evaluate_07: epoch = 0300 train time = 2 s train loss = 0.003653 train acc = 1.0000, test acc = 0.1082
+[2023-10-27 23:48:47] Evaluate_08: epoch = 0300 train time = 2 s train loss = 0.003647 train acc = 1.0000, test acc = 0.0905
+[2023-10-27 23:48:52] Evaluate_09: epoch = 0300 train time = 2 s train loss = 0.003627 train acc = 1.0000, test acc = 0.1020
+[2023-10-27 23:48:56] Evaluate_10: epoch = 0300 train time = 2 s train loss = 0.003612 train acc = 1.0000, test acc = 0.0968
+[2023-10-27 23:49:01] Evaluate_11: epoch = 0300 train time = 2 s train loss = 0.003642 train acc = 1.0000, test acc = 0.1010
+[2023-10-27 23:49:05] Evaluate_12: epoch = 0300 train time = 2 s train loss = 0.003606 train acc = 1.0000, test acc = 0.1199
+[2023-10-27 23:49:09] Evaluate_13: epoch = 0300 train time = 2 s train loss = 0.003789 train acc = 1.0000, test acc = 0.1112
+[2023-10-27 23:49:14] Evaluate_14: epoch = 0300 train time = 2 s train loss = 0.003725 train acc = 1.0000, test acc = 0.0880
+[2023-10-27 23:49:18] Evaluate_15: epoch = 0300 train time = 2 s train loss = 0.003658 train acc = 1.0000, test acc = 0.1148
+[2023-10-27 23:49:23] Evaluate_16: epoch = 0300 train time = 2 s train loss = 0.003574 train acc = 1.0000, test acc = 0.1115
+[2023-10-27 23:49:27] Evaluate_17: epoch = 0300 train time = 2 s train loss = 0.003626 train acc = 1.0000, test acc = 0.1021
+[2023-10-27 23:49:32] Evaluate_18: epoch = 0300 train time = 2 s train loss = 0.003633 train acc = 1.0000, test acc = 0.1014
+[2023-10-27 23:49:36] Evaluate_19: epoch = 0300 train time = 2 s train loss = 0.003709 train acc = 1.0000, test acc = 0.1018
+Evaluate 20 random ConvNet, mean = 0.1029 std = 0.0084
+-------------------------
+Traceback (most recent call last):
+  File "main.py", line 264, in <module>
+    main()
+  File "main.py", line 226, in main
+    lda_loss = LDALoss(lda_X, lda_Y)
+  File "/data/happythgus/newLDA/DC/utils.py", line 67, in LDALoss
+    print(torch.mean(torch.tensor(class_samples).to('cuda')).to('cuda'))
+ValueError: only one element tensors can be converted to Python scalars

@@ -1,0 +1,4 @@
+/data/happythgus/newLDA/DC
+/data/opt/anaconda3/envs/pytorch1.12.1_p38/bin/python
+moana-r3
+slurmstepd: error: *** JOB 22498 ON moana-r3 CANCELLED AT 2023-10-26T22:44:38 ***

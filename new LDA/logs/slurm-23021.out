@@ -1,0 +1,217 @@
+/data/happythgus/newLDA/DC
+/data/opt/anaconda3/envs/pytorch1.12.1_p38/bin/python
+moana-r4
+main.py:95: DeprecationWarning: an integer is required (got type numpy.float64).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+main.py:95: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484810403/work/torch/csrc/utils/tensor_new.cpp:201.)
+  label_syn = torch.tensor([np.ones(args.ipc)*i for i in range(num_classes)], dtype=torch.long, requires_grad=False, device=args.device).view(-1) # [0,0,0, 1,1,1, ..., 9,9,9]
+eval_it_pool:  [0, 500, 1000]
+Files already downloaded and verified
+Files already downloaded and verified
+
+================== Exp 0 ==================
+ 
+Hyper-parameters: 
+ {'method': 'DC', 'dataset': 'CIFAR10', 'model': 'ConvNet', 'ipc': 10, 'eval_mode': 'S', 'num_exp': 1, 'num_eval': 20, 'epoch_eval_train': 300, 'Iteration': 1000, 'lr_img': 0.1, 'lr_net': 0.01, 'batch_real': 256, 'batch_train': 256, 'init': 'noise', 'dsa_strategy': 'None', 'data_path': 'data', 'save_path': 'result', 'dis_metric': 'ours', 'outer_loop': 10, 'inner_loop': 50, 'device': 'cuda', 'dsa_param': <utils.ParamDiffAug object at 0x7fc8ce8e6cd0>, 'dsa': False}
+Evaluation model pool:  ['ConvNet']
+class c = 0: 5000 real images
+class c = 1: 5000 real images
+class c = 2: 5000 real images
+class c = 3: 5000 real images
+class c = 4: 5000 real images
+class c = 5: 5000 real images
+class c = 6: 5000 real images
+class c = 7: 5000 real images
+class c = 8: 5000 real images
+class c = 9: 5000 real images
+real images channel 0, mean = -0.0000, std = 1.2211
+real images channel 1, mean = -0.0002, std = 1.2211
+real images channel 2, mean = 0.0002, std = 1.3014
+initialize synthetic data from random noise
+[2023-10-30 14:44:56] training begins
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 0
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'none'}
+[2023-10-30 14:45:01] Evaluate_00: epoch = 0300 train time = 3 s train loss = 0.003603 train acc = 1.0000, test acc = 0.1364
+[2023-10-30 14:45:04] Evaluate_01: epoch = 0300 train time = 1 s train loss = 0.003640 train acc = 1.0000, test acc = 0.1510
+[2023-10-30 14:45:07] Evaluate_02: epoch = 0300 train time = 1 s train loss = 0.003750 train acc = 1.0000, test acc = 0.1423
+[2023-10-30 14:45:10] Evaluate_03: epoch = 0300 train time = 1 s train loss = 0.003760 train acc = 1.0000, test acc = 0.1389
+[2023-10-30 14:45:13] Evaluate_04: epoch = 0300 train time = 1 s train loss = 0.003670 train acc = 1.0000, test acc = 0.1487
+[2023-10-30 14:45:16] Evaluate_05: epoch = 0300 train time = 1 s train loss = 0.003624 train acc = 1.0000, test acc = 0.1371
+[2023-10-30 14:45:19] Evaluate_06: epoch = 0300 train time = 1 s train loss = 0.003631 train acc = 1.0000, test acc = 0.1418
+[2023-10-30 14:45:22] Evaluate_07: epoch = 0300 train time = 1 s train loss = 0.003689 train acc = 1.0000, test acc = 0.1420
+[2023-10-30 14:45:25] Evaluate_08: epoch = 0300 train time = 1 s train loss = 0.003468 train acc = 1.0000, test acc = 0.1316
+[2023-10-30 14:45:29] Evaluate_09: epoch = 0300 train time = 1 s train loss = 0.003659 train acc = 1.0000, test acc = 0.1481
+[2023-10-30 14:45:32] Evaluate_10: epoch = 0300 train time = 1 s train loss = 0.003645 train acc = 1.0000, test acc = 0.1322
+[2023-10-30 14:45:35] Evaluate_11: epoch = 0300 train time = 1 s train loss = 0.003613 train acc = 1.0000, test acc = 0.1142
+[2023-10-30 14:45:38] Evaluate_12: epoch = 0300 train time = 1 s train loss = 0.003674 train acc = 1.0000, test acc = 0.1347
+[2023-10-30 14:45:41] Evaluate_13: epoch = 0300 train time = 1 s train loss = 0.003761 train acc = 1.0000, test acc = 0.1465
+[2023-10-30 14:45:44] Evaluate_14: epoch = 0300 train time = 1 s train loss = 0.003679 train acc = 1.0000, test acc = 0.1490
+[2023-10-30 14:45:47] Evaluate_15: epoch = 0300 train time = 1 s train loss = 0.003650 train acc = 1.0000, test acc = 0.1393
+[2023-10-30 14:45:50] Evaluate_16: epoch = 0300 train time = 1 s train loss = 0.003659 train acc = 1.0000, test acc = 0.1326
+[2023-10-30 14:45:53] Evaluate_17: epoch = 0300 train time = 1 s train loss = 0.003785 train acc = 1.0000, test acc = 0.1315
+[2023-10-30 14:45:56] Evaluate_18: epoch = 0300 train time = 1 s train loss = 0.003625 train acc = 1.0000, test acc = 0.1291
+[2023-10-30 14:45:59] Evaluate_19: epoch = 0300 train time = 1 s train loss = 0.003604 train acc = 1.0000, test acc = 0.1450
+Evaluate 20 random ConvNet, mean = 0.1386 std = 0.0086
+-------------------------
+[2023-10-30 14:46:03] iter = 0000, loss = nan
+[2023-10-30 14:46:49] iter = 0010, loss = inf
+[2023-10-30 14:47:35] iter = 0020, loss = inf
+[2023-10-30 14:48:21] iter = 0030, loss = inf
+[2023-10-30 14:49:07] iter = 0040, loss = nan
+[2023-10-30 14:49:53] iter = 0050, loss = nan
+[2023-10-30 14:50:39] iter = 0060, loss = inf
+[2023-10-30 14:51:25] iter = 0070, loss = inf
+[2023-10-30 14:52:11] iter = 0080, loss = inf
+[2023-10-30 14:52:55] iter = 0090, loss = inf
+[2023-10-30 14:53:41] iter = 0100, loss = nan
+[2023-10-30 14:54:26] iter = 0110, loss = nan
+[2023-10-30 14:55:11] iter = 0120, loss = nan
+[2023-10-30 14:55:57] iter = 0130, loss = nan
+[2023-10-30 14:56:44] iter = 0140, loss = inf
+[2023-10-30 14:57:30] iter = 0150, loss = inf
+[2023-10-30 14:58:16] iter = 0160, loss = nan
+[2023-10-30 14:59:02] iter = 0170, loss = inf
+[2023-10-30 14:59:48] iter = 0180, loss = inf
+[2023-10-30 15:00:34] iter = 0190, loss = inf
+[2023-10-30 15:01:19] iter = 0200, loss = inf
+[2023-10-30 15:02:06] iter = 0210, loss = inf
+[2023-10-30 15:02:51] iter = 0220, loss = nan
+[2023-10-30 15:03:37] iter = 0230, loss = inf
+[2023-10-30 15:04:23] iter = 0240, loss = nan
+[2023-10-30 15:05:09] iter = 0250, loss = inf
+[2023-10-30 15:05:55] iter = 0260, loss = inf
+[2023-10-30 15:06:41] iter = 0270, loss = nan
+[2023-10-30 15:07:27] iter = 0280, loss = nan
+[2023-10-30 15:08:13] iter = 0290, loss = inf
+[2023-10-30 15:09:00] iter = 0300, loss = nan
+[2023-10-30 15:09:46] iter = 0310, loss = nan
+[2023-10-30 15:10:32] iter = 0320, loss = inf
+[2023-10-30 15:11:19] iter = 0330, loss = inf
+[2023-10-30 15:12:06] iter = 0340, loss = inf
+[2023-10-30 15:12:52] iter = 0350, loss = inf
+[2023-10-30 15:13:38] iter = 0360, loss = inf
+[2023-10-30 15:14:25] iter = 0370, loss = inf
+[2023-10-30 15:15:10] iter = 0380, loss = inf
+[2023-10-30 15:15:57] iter = 0390, loss = inf
+[2023-10-30 15:16:42] iter = 0400, loss = inf
+[2023-10-30 15:17:29] iter = 0410, loss = inf
+[2023-10-30 15:18:15] iter = 0420, loss = inf
+[2023-10-30 15:19:01] iter = 0430, loss = inf
+[2023-10-30 15:19:47] iter = 0440, loss = nan
+[2023-10-30 15:20:33] iter = 0450, loss = inf
+[2023-10-30 15:21:19] iter = 0460, loss = inf
+[2023-10-30 15:22:04] iter = 0470, loss = inf
+[2023-10-30 15:22:51] iter = 0480, loss = inf
+[2023-10-30 15:23:38] iter = 0490, loss = inf
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 500
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'none'}
+[2023-10-30 15:24:22] Evaluate_00: epoch = 0300 train time = 1 s train loss = 0.008502 train acc = 1.0000, test acc = 0.3986
+[2023-10-30 15:24:25] Evaluate_01: epoch = 0300 train time = 1 s train loss = 0.008504 train acc = 1.0000, test acc = 0.4156
+[2023-10-30 15:24:29] Evaluate_02: epoch = 0300 train time = 1 s train loss = 0.008613 train acc = 1.0000, test acc = 0.4202
+[2023-10-30 15:24:32] Evaluate_03: epoch = 0300 train time = 1 s train loss = 0.008148 train acc = 1.0000, test acc = 0.3960
+[2023-10-30 15:24:35] Evaluate_04: epoch = 0300 train time = 1 s train loss = 0.008624 train acc = 1.0000, test acc = 0.4128
+[2023-10-30 15:24:38] Evaluate_05: epoch = 0300 train time = 1 s train loss = 0.008671 train acc = 1.0000, test acc = 0.4138
+[2023-10-30 15:24:41] Evaluate_06: epoch = 0300 train time = 1 s train loss = 0.008627 train acc = 1.0000, test acc = 0.3971
+[2023-10-30 15:24:44] Evaluate_07: epoch = 0300 train time = 1 s train loss = 0.008628 train acc = 1.0000, test acc = 0.4024
+[2023-10-30 15:24:47] Evaluate_08: epoch = 0300 train time = 1 s train loss = 0.008632 train acc = 1.0000, test acc = 0.4076
+[2023-10-30 15:24:50] Evaluate_09: epoch = 0300 train time = 1 s train loss = 0.008824 train acc = 1.0000, test acc = 0.4077
+[2023-10-30 15:24:54] Evaluate_10: epoch = 0300 train time = 1 s train loss = 0.008447 train acc = 1.0000, test acc = 0.3986
+[2023-10-30 15:24:57] Evaluate_11: epoch = 0300 train time = 1 s train loss = 0.008537 train acc = 1.0000, test acc = 0.4047
+[2023-10-30 15:25:00] Evaluate_12: epoch = 0300 train time = 1 s train loss = 0.008407 train acc = 1.0000, test acc = 0.4025
+[2023-10-30 15:25:03] Evaluate_13: epoch = 0300 train time = 1 s train loss = 0.008223 train acc = 1.0000, test acc = 0.4233
+[2023-10-30 15:25:06] Evaluate_14: epoch = 0300 train time = 1 s train loss = 0.008442 train acc = 1.0000, test acc = 0.3996
+[2023-10-30 15:25:09] Evaluate_15: epoch = 0300 train time = 1 s train loss = 0.008593 train acc = 1.0000, test acc = 0.3953
+[2023-10-30 15:25:12] Evaluate_16: epoch = 0300 train time = 1 s train loss = 0.008014 train acc = 1.0000, test acc = 0.4207
+[2023-10-30 15:25:15] Evaluate_17: epoch = 0300 train time = 1 s train loss = 0.008622 train acc = 1.0000, test acc = 0.4059
+[2023-10-30 15:25:19] Evaluate_18: epoch = 0300 train time = 1 s train loss = 0.008768 train acc = 1.0000, test acc = 0.3954
+[2023-10-30 15:25:22] Evaluate_19: epoch = 0300 train time = 1 s train loss = 0.008549 train acc = 1.0000, test acc = 0.4144
+Evaluate 20 random ConvNet, mean = 0.4066 std = 0.0089
+-------------------------
+[2023-10-30 15:25:26] iter = 0500, loss = inf
+[2023-10-30 15:26:12] iter = 0510, loss = nan
+[2023-10-30 15:26:57] iter = 0520, loss = inf
+[2023-10-30 15:27:43] iter = 0530, loss = inf
+[2023-10-30 15:28:29] iter = 0540, loss = nan
+[2023-10-30 15:29:15] iter = 0550, loss = nan
+[2023-10-30 15:30:01] iter = 0560, loss = nan
+[2023-10-30 15:30:47] iter = 0570, loss = inf
+[2023-10-30 15:31:34] iter = 0580, loss = inf
+[2023-10-30 15:32:20] iter = 0590, loss = nan
+[2023-10-30 15:33:06] iter = 0600, loss = inf
+[2023-10-30 15:33:53] iter = 0610, loss = inf
+[2023-10-30 15:34:40] iter = 0620, loss = inf
+[2023-10-30 15:35:27] iter = 0630, loss = inf
+[2023-10-30 15:36:13] iter = 0640, loss = nan
+[2023-10-30 15:36:59] iter = 0650, loss = inf
+[2023-10-30 15:37:45] iter = 0660, loss = inf
+[2023-10-30 15:38:32] iter = 0670, loss = inf
+[2023-10-30 15:39:18] iter = 0680, loss = inf
+[2023-10-30 15:40:04] iter = 0690, loss = inf
+[2023-10-30 15:40:50] iter = 0700, loss = inf
+[2023-10-30 15:41:36] iter = 0710, loss = inf
+[2023-10-30 15:42:23] iter = 0720, loss = inf
+[2023-10-30 15:43:09] iter = 0730, loss = inf
+[2023-10-30 15:43:55] iter = 0740, loss = nan
+[2023-10-30 15:44:40] iter = 0750, loss = inf
+[2023-10-30 15:45:27] iter = 0760, loss = inf
+[2023-10-30 15:46:13] iter = 0770, loss = nan
+[2023-10-30 15:46:59] iter = 0780, loss = inf
+[2023-10-30 15:47:44] iter = 0790, loss = inf
+[2023-10-30 15:48:30] iter = 0800, loss = nan
+[2023-10-30 15:49:16] iter = 0810, loss = inf
+[2023-10-30 15:50:01] iter = 0820, loss = inf
+[2023-10-30 15:50:47] iter = 0830, loss = inf
+[2023-10-30 15:51:32] iter = 0840, loss = nan
+[2023-10-30 15:52:18] iter = 0850, loss = inf
+[2023-10-30 15:53:05] iter = 0860, loss = inf
+[2023-10-30 15:53:51] iter = 0870, loss = nan
+[2023-10-30 15:54:37] iter = 0880, loss = nan
+[2023-10-30 15:55:23] iter = 0890, loss = inf
+[2023-10-30 15:56:08] iter = 0900, loss = inf
+[2023-10-30 15:56:54] iter = 0910, loss = inf
+[2023-10-30 15:57:40] iter = 0920, loss = inf
+[2023-10-30 15:58:26] iter = 0930, loss = inf
+[2023-10-30 15:59:12] iter = 0940, loss = inf
+[2023-10-30 15:59:58] iter = 0950, loss = inf
+[2023-10-30 16:00:44] iter = 0960, loss = inf
+[2023-10-30 16:01:29] iter = 0970, loss = inf
+[2023-10-30 16:02:15] iter = 0980, loss = inf
+[2023-10-30 16:03:01] iter = 0990, loss = nan
+-------------------------
+Evaluation
+model_train = ConvNet, model_eval = ConvNet, iteration = 1000
+DC augmentation parameters: 
+ {'crop': 4, 'scale': 0.2, 'rotate': 45, 'noise': 0.001, 'strategy': 'none'}
+[2023-10-30 16:03:46] Evaluate_00: epoch = 0300 train time = 1 s train loss = 0.008803 train acc = 1.0000, test acc = 0.4132
+[2023-10-30 16:03:49] Evaluate_01: epoch = 0300 train time = 1 s train loss = 0.008365 train acc = 1.0000, test acc = 0.4270
+[2023-10-30 16:03:52] Evaluate_02: epoch = 0300 train time = 1 s train loss = 0.008744 train acc = 1.0000, test acc = 0.4178
+[2023-10-30 16:03:55] Evaluate_03: epoch = 0300 train time = 1 s train loss = 0.008405 train acc = 1.0000, test acc = 0.4353
+[2023-10-30 16:03:58] Evaluate_04: epoch = 0300 train time = 1 s train loss = 0.008508 train acc = 1.0000, test acc = 0.4186
+[2023-10-30 16:04:01] Evaluate_05: epoch = 0300 train time = 1 s train loss = 0.009169 train acc = 1.0000, test acc = 0.4258
+[2023-10-30 16:04:04] Evaluate_06: epoch = 0300 train time = 1 s train loss = 0.008481 train acc = 1.0000, test acc = 0.4097
+[2023-10-30 16:04:07] Evaluate_07: epoch = 0300 train time = 1 s train loss = 0.009055 train acc = 1.0000, test acc = 0.4267
+[2023-10-30 16:04:10] Evaluate_08: epoch = 0300 train time = 1 s train loss = 0.008332 train acc = 1.0000, test acc = 0.4206
+[2023-10-30 16:04:13] Evaluate_09: epoch = 0300 train time = 1 s train loss = 0.008786 train acc = 1.0000, test acc = 0.4117
+[2023-10-30 16:04:16] Evaluate_10: epoch = 0300 train time = 1 s train loss = 0.008515 train acc = 1.0000, test acc = 0.4202
+[2023-10-30 16:04:19] Evaluate_11: epoch = 0300 train time = 1 s train loss = 0.008669 train acc = 1.0000, test acc = 0.4273
+[2023-10-30 16:04:22] Evaluate_12: epoch = 0300 train time = 1 s train loss = 0.008601 train acc = 1.0000, test acc = 0.4224
+[2023-10-30 16:04:25] Evaluate_13: epoch = 0300 train time = 1 s train loss = 0.008531 train acc = 1.0000, test acc = 0.4134
+[2023-10-30 16:04:28] Evaluate_14: epoch = 0300 train time = 1 s train loss = 0.008693 train acc = 1.0000, test acc = 0.4190
+[2023-10-30 16:04:31] Evaluate_15: epoch = 0300 train time = 1 s train loss = 0.008298 train acc = 1.0000, test acc = 0.4244
+[2023-10-30 16:04:35] Evaluate_16: epoch = 0300 train time = 1 s train loss = 0.008573 train acc = 1.0000, test acc = 0.4239
+[2023-10-30 16:04:38] Evaluate_17: epoch = 0300 train time = 1 s train loss = 0.008842 train acc = 1.0000, test acc = 0.4197
+[2023-10-30 16:04:41] Evaluate_18: epoch = 0300 train time = 1 s train loss = 0.008169 train acc = 1.0000, test acc = 0.4260
+[2023-10-30 16:04:44] Evaluate_19: epoch = 0300 train time = 1 s train loss = 0.009005 train acc = 1.0000, test acc = 0.4096
+Evaluate 20 random ConvNet, mean = 0.4206 std = 0.0066
+-------------------------
+[2023-10-30 16:04:49] iter = 1000, loss = inf
+
+==================== Final Results ====================
+
+Run 1 experiments, train on ConvNet, evaluate 20 random ConvNet, mean  = 42.06%  std = 0.66%
